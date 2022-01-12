@@ -6,7 +6,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.Constants.Buttons;
+import frc.robot.Constants.Pnuematics.SolenoidDirection;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -16,10 +20,12 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-
+  private final Solenoid m_solenoid = new Solenoid();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    
+
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -30,7 +36,13 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    Buttons.m_aButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.FORWARD), true);
+    Buttons.m_bButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.REVERSE), true);
+    Buttons.m_xButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.OFF), true);
+
+
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -41,4 +53,8 @@ public class RobotContainer {
     
   //   // An ExampleCommand will run in autonomous
   // }
+
+  public Solenoid getSolenoid() {
+    return m_solenoid;
+  }
 }
