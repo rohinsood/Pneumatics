@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.Buttons;
 import frc.robot.Constants.Pnuematics.SolenoidDirection;
 import frc.robot.subsystems.Solenoid;
 
@@ -25,13 +26,17 @@ public class SolenoidCommand extends CommandBase{
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (button == SolenoidDirection.FORWARD) m_solenoid.forward();
+        if (button == SolenoidDirection.FORWARD) m_solenoid.forward(); System.out.println("Forwards");
 
-        if (button == SolenoidDirection.REVERSE) m_solenoid.reverse();
+        if (button == SolenoidDirection.REVERSE) m_solenoid.reverse(); System.out.println("Reverse");
 
-        if (button == SolenoidDirection.OFF) m_solenoid.off();
+        if (button == SolenoidDirection.OFF) m_solenoid.off(); System.out.println("Off");
 
-        if (button == SolenoidDirection.COMPRESSOR) m_solenoid.loopControl();
+        if (button == SolenoidDirection.COMPRESSOR) m_solenoid.loopControl(); System.out.println("Loop Ctrl");
+
+        System.out.println("LEFT TRIGGER: " + String.valueOf(Buttons.m_leftTriggerValue));
+        System.out.println("RIGHT TRIGGER: " + String.valueOf(Buttons.m_rightTriggerValue));
+
     }
 
     // Called once the command ends or is interrupted.

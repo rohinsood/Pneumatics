@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -19,14 +20,13 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public final class Constants {
     public static class Pnuematics {
         public static enum SolenoidDirection {
-            FORWARD, REVERSE, OFF, COMPRESSOR
+            FORWARD, REVERSE, OFF, COMPRESSOR, TRIGGER
         }
         public final static int kSolenoidForwardChannel = 2;
         public final static int kSolenoidReverseChannel = 2;
         
-
+    
     }
-
     public static class Buttons {
         public final static XboxController m_xboxController = new XboxController(0);
         public final static JoystickButton m_aButton = new JoystickButton(m_xboxController, Button.kA.value);
@@ -37,6 +37,8 @@ public final class Constants {
         public final static JoystickButton m_rightBumper = new JoystickButton(m_xboxController, Button.kRightBumper.value);
         public final static JoystickButton m_leftJoystickButton = new JoystickButton(m_xboxController, Button.kLeftStick.value);
         public final static JoystickButton m_rightJoystickButton = new JoystickButton(m_xboxController, Button.kRightStick.value);
+        public static final double m_leftTriggerValue = m_xboxController.getLeftTriggerAxis();
+        public static final double m_rightTriggerValue = m_xboxController.getRightTriggerAxis();
     }
 
     

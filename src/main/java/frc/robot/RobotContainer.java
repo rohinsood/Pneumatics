@@ -40,8 +40,7 @@ public class RobotContainer {
     Buttons.m_bButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.REVERSE), true);
     Buttons.m_xButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.OFF), true);
     Buttons.m_yButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.COMPRESSOR), true);
-
-
+    
   }
 
   /**
