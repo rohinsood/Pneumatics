@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public final class Constants {
     public static class Pnuematics {
         public static enum SolenoidDirection {
-            FORWARD, REVERSE, OFF
+            FORWARD, REVERSE, OFF, COMPRESSOR
         }
         public final static int kSolenoidForwardChannel = 2;
         public final static int kSolenoidReverseChannel = 2;

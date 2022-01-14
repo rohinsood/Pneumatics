@@ -30,6 +30,8 @@ public class SolenoidCommand extends CommandBase{
         if (button == SolenoidDirection.REVERSE) m_solenoid.reverse();
 
         if (button == SolenoidDirection.OFF) m_solenoid.off();
+
+        if (button == SolenoidDirection.COMPRESSOR) m_solenoid.loopControl();
     }
 
     // Called once the command ends or is interrupted.
