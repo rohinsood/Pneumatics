@@ -23,7 +23,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    
+    m_solenoid.setDefaultCommand(new SolenoidCommand(m_solenoid));
 
     // Configure the button bindings
     configureButtonBindings();
@@ -36,11 +36,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    Buttons.m_aButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.FORWARD), true);
-    Buttons.m_bButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.REVERSE), true);
-    Buttons.m_xButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.OFF), true);
-    Buttons.m_yButton.whenPressed(new SolenoidCommand(m_solenoid, SolenoidDirection.COMPRESSOR), true);
-    
+
   }
 
   /**

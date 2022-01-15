@@ -12,22 +12,33 @@ import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 
 public class Solenoid extends SubsystemBase {
     private final Compressor m_comp = new Compressor(0, PneumaticsModuleType.CTREPCM);
-    private final DoubleSolenoid m_doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Pnuematics.kSolenoidForwardChannel, Pnuematics.kSolenoidReverseChannel); 
+    private final DoubleSolenoid[] m_doubleSolenoid = new DoubleSolenoid[2];
 
-    public void forward() {
-        m_doubleSolenoid.set(kForward);
+    public Solenoid () {
+        for (int i = 0; i<2; i++) {
+            m_doubleSolenoid[i] = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Pnuematics.kSolenoidForwardChannel[i], Pnuematics.kSolenoidReverseChannel[i]);
+        }
+    }
+ 
+
+    public void forward(int pos) {
+        m_doubleSolenoid[pos].set(kForward);
     }
 
-    public void reverse() {
-        m_doubleSolenoid.set(kReverse);
+    public void reverse(int pos) {
+        m_doubleSolenoid[pos].set(kReverse);
     }
 
-    public void off() {
-        m_doubleSolenoid.set(kOff);
+    public void off(int pos) {
+        m_doubleSolenoid[pos].set(kOff);
     } 
 
     public void loopControl(){
         m_comp.enableDigital();
+    }
+
+    public void disableLoopControl() {
+        m_comp.disable();
     }
 }
 

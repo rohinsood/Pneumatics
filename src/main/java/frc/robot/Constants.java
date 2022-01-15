@@ -5,6 +5,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController.Button;
+
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -22,8 +25,8 @@ public final class Constants {
         public static enum SolenoidDirection {
             FORWARD, REVERSE, OFF, COMPRESSOR, TRIGGER
         }
-        public final static int kSolenoidForwardChannel = 2;
-        public final static int kSolenoidReverseChannel = 2;
+        public final static int[] kSolenoidForwardChannel = {2,4};
+        public final static int[] kSolenoidReverseChannel = {3,5};
         
     
     }
@@ -37,8 +40,8 @@ public final class Constants {
         public final static JoystickButton m_rightBumper = new JoystickButton(m_xboxController, Button.kRightBumper.value);
         public final static JoystickButton m_leftJoystickButton = new JoystickButton(m_xboxController, Button.kLeftStick.value);
         public final static JoystickButton m_rightJoystickButton = new JoystickButton(m_xboxController, Button.kRightStick.value);
-        public static final double m_leftTriggerValue = m_xboxController.getLeftTriggerAxis();
-        public static final double m_rightTriggerValue = m_xboxController.getRightTriggerAxis();
+        public static final DoubleSupplier m_leftTriggerValue = m_xboxController::getLeftTriggerAxis;
+        public static final DoubleSupplier m_rightTriggerValue = m_xboxController::getRightTriggerAxis;
     }
 
     
